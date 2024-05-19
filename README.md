@@ -10,7 +10,6 @@
 [![CI Status][ci badge]][ci link]
 [![Documentation][docs badge]][docs link]
 [![Version][crates.io version]][crates.io link]
-[![MSRV][rust version badge]][rust version link]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -35,7 +34,7 @@ Procedural Noise Generation library <i>for Rust</i>
 
 ```toml
 [dependencies]
-noise = "0.8"
+noise = "0.9"
 ```
 
 <!-- ABOUT THE PROJECT -->
@@ -73,7 +72,7 @@ To use the function `write_to_file` you have to set the feature `"images"` in th
 
 ```toml
 [dependencies]
-noise = { version = "0.8.2", features = ["images"] }
+noise = { version = "0.9.0", features = ["images"] }
 ```
 
 ```rust
@@ -166,7 +165,3 @@ Project Link: [https://github.com/razaekel/noise-rs][github link]
 [planet surface 4x]: /images/unscaledFinalPlanet_4x_zoom.png
 
 [planet surface 16x]: /images/unscaledFinalPlanet_16x_zoom.png
-
-[rust version badge]: https://img.shields.io/badge/rust-1.63.0+-93450a.svg?style=for-the-badge&logo=rust
-
-[rust version link]: https://blog.rust-lang.org/2022/08/11/Rust-1.63.0.html

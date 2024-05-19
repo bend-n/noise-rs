@@ -55,10 +55,6 @@ pub struct Fbm<T> {
     scale_factor: f64,
 }
 
-fn calc_scale_factor(persistence: f64, octaves: usize) -> f64 {
-    1.0 - persistence.powi(octaves as i32)
-}
-
 impl<T> Fbm<T>
 where
     T: Default + Seedable,
@@ -78,7 +74,10 @@ where
             lacunarity: Self::DEFAULT_LACUNARITY,
             persistence: Self::DEFAULT_PERSISTENCE,
             sources: super::build_sources(seed, Self::DEFAULT_OCTAVE_COUNT),
-            scale_factor: calc_scale_factor(Self::DEFAULT_PERSISTENCE, Self::DEFAULT_OCTAVE_COUNT),
+            scale_factor: Self::calc_scale_factor(
+                Self::DEFAULT_PERSISTENCE,
+                Self::DEFAULT_OCTAVE_COUNT,
+            ),
         }
     }
 
@@ -180,7 +179,7 @@ where
             signal *= attenuation;
 
             // Increase the attenuation for the next octave, to be equal to persistence ^ (x + 1)
-            attenuation *= attenuation;
+            attenuation *= self.persistence;
 
             // Add the signal to the result.
             result += signal;
@@ -216,7 +215,7 @@ where
             signal *= attenuation;
 
             // Increase the attenuation for the next octave, to be equal to persistence ^ (x + 1)
-            attenuation *= attenuation;
+            attenuation *= self.persistence;
 
             // Add the signal to the result.
             result += signal;
@@ -252,7 +251,7 @@ where
             signal *= attenuation;
 
             // Increase the attenuation for the next octave, to be equal to persistence ^ (x + 1)
-            attenuation *= attenuation;
+            attenuation *= self.persistence;
 
             // Add the signal to the result.
             result += signal;
